@@ -1,0 +1,12 @@
+{
+  "name": "vibe-controller-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dark, nebula-themed landing page with a 3D galaxy particle system controlled by hand gestures via webcam.",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  }
+}
+
+

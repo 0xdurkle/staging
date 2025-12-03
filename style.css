@@ -1,0 +1,161 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter",
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #111111 0%, #000000 60%, #000000 100%);
+  color: #f5f5f5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.vc-header {
+  display: none; /* header hidden per request */
+}
+
+.vc-header-title {
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #f9f5ff;
+  text-shadow: 0 0 20px rgba(160, 120, 255, 0.65);
+}
+
+.vc-header-subtitle {
+  font-size: 12px;
+  max-width: 360px;
+  color: #b9a9ff;
+  opacity: 0.9;
+}
+
+.vc-main {
+  position: relative;
+  flex: 1;
+  height: 100%;
+}
+
+#webgl-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+#vc-webcam {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 200px;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 0 30px rgba(255, 255, 255, 0.35);
+  opacity: 0.4;
+  transform: scaleX(-1); /* mirror for more natural interaction */
+  backdrop-filter: blur(10px);
+  background: radial-gradient(circle at top left, #444444 0%, #111111 55%);
+  overflow: hidden;
+}
+
+.vc-overlay-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(4, 4, 4, 0.9);
+  color: #f5f5f5;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35),
+    0 12px 40px rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(16px);
+  z-index: 9;
+}
+
+.vc-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #ffffff 0%, #d4d4d4 45%, #888888 95%);
+  font-size: 11px;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+}
+
+/* Subtle animated vignette */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 70% 10%, rgba(255, 255, 255, 0.09), transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  animation: vc-nebula 26s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes vc-nebula {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    transform: translate3d(-20px, 10px, 0) scale(1.06);
+    filter: blur(2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .vc-header {
+    padding: 12px 16px;
+  }
+
+  .vc-header-title {
+    font-size: 18px;
+  }
+
+  .vc-header-subtitle {
+    max-width: none;
+  }
+
+  #vc-webcam {
+    width: 140px;
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .vc-overlay-hint {
+    bottom: 72px;
+    font-size: 11px;
+  }
+}
+
+

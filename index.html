@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Controller</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="vc-main">
+      <div id="webgl-container"></div>
+      <video id="vc-webcam" autoplay playsinline muted></video>
+    </main>
+
+    <!-- MediaPipe Hands & Camera utils (for hand tracking) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin></script>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+  </html>
+
+
